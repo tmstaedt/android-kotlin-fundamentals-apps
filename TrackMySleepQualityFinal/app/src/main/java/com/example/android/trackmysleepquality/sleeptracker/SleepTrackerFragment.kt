@@ -22,8 +22,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+// import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
@@ -61,9 +62,11 @@ class SleepTrackerFragment : Fragment() {
         val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment.
-        val sleepTrackerViewModel =
-                ViewModelProviders.of(
-                        this, viewModelFactory).get(SleepTrackerViewModel::class.java)
+//        val sleepTrackerViewModel =
+//                ViewModelProviders.of(
+//                        this, viewModelFactory).get(SleepTrackerViewModel::class.java)
+
+        val sleepTrackerViewModel by viewModels<SleepTrackerViewModel> { viewModelFactory }
 
         // To use the View Model with data binding, you have to explicitly
         // give the binding object a reference to it.
